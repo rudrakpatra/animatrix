@@ -12,6 +12,7 @@
 
   font-size: large;
   border-top: 2px solid var(--color-neutral-light);
+  width: 100vw;
   height: fit-content;
   overflow-y: hidden;
   overflow-x: scroll;
@@ -43,6 +44,7 @@
   background-color: var(--color-neutral);
   white-space: nowrap;
   opacity: 0.8;
+  height: fit-content;
   overflow-y: hidden;
   overflow-x: scroll;
   scroll-behavior: smooth;

@@ -29,9 +29,6 @@ class Toolbar extends React.Component {
       </div>
     );
   }
-  setActiveTool(tool) {
-    this.props.setActiveTool(tool);
-  }
   renderTools() {
     return (
       <div className="toolsList">
@@ -40,7 +37,7 @@ class Toolbar extends React.Component {
             <div
               key={i}
               className={`tool ${this.props.activeTool === tool && "active"}`}
-              onClick={() => this.setActiveTool(tool)}
+              onClick={() => this.props.setActiveTool(tool)}
             >
               {tool.config.name}
             </div>

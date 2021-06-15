@@ -24,16 +24,3 @@ body {
   position: fixed;
   z-index: 10;
 }
-canvas[resize] {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-}
-canvas {
-  background-color: var(--color-canvas-background);
-}
-.canvasContainer {
-  margin: 0;
-  overflow: hidden;
-  height: 100%;
-}
