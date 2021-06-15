@@ -1,0 +1,81 @@
+.projectInfo {
+  color: var(--color-neon);
+}
+.toolsBar {
+  bottom: 0px;
+  left: 0px;
+  background-color: var(--color-darker);
+}
+.toolsList {
+  display: flex;
+  flex-direction: row;
+
+  font-size: large;
+  border-top: 2px solid var(--color-neutral-light);
+  height: fit-content;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+.toolsList::-webkit-scrollbar {
+  display: none;
+}
+.tool {
+  cursor: pointer;
+  padding-right: 5px;
+  padding-bottom: 20px;
+  padding-left: 5px;
+  white-space: nowrap;
+  color: var(--color-neon);
+  transition: all 200ms ease-out;
+}
+.tool.active {
+  color: var(--color-neoner);
+  background-color: var(--color-neutral-light);
+}
+.tool:hover {
+  color: var(--color-neoner);
+}
+.modifier {
+  padding: 10px;
+  margin: 3px;
+  margin-bottom: 10px;
+  background-color: var(--color-neutral);
+  white-space: nowrap;
+  opacity: 0.8;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  color: var(--color-neon);
+}
+.modifier::-webkit-scrollbar {
+  display: none;
+}
+.modifiersList > .container {
+  display: flex;
+  flex-direction: column;
+  height: 0px;
+  background-color: var(--color-neutral-light);
+  transition: all 100ms ease-in-out;
+  transition-delay: 0.05s;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.modifiersList > .container::-webkit-scrollbar {
+  display: none;
+}
+.modifiersList:hover > .container {
+  height: 20vh;
+  transition-delay: 0.4s;
+}
+.modifiersList {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  overflow: hidden;
+  background-color: var(--color-darker);
+  line-height: 10px;
+  padding-top: 10px;
+  padding-bottom: 2px;
+}
