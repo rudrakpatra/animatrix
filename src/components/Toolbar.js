@@ -1,9 +1,10 @@
 import React from "react";
 import "./Toolbar.css";
 class Toolbar extends React.Component {
-  //   constructor(props) {
-  //     super(props);
-  //   }
+  constructor(props) {
+    super(props);
+    this.props.setActiveToolInfo(this.props.toolModifiers[0]);
+  }
   renderModifiers() {
     return (
       <div className="modifiersList">

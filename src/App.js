@@ -6,6 +6,7 @@ import HumanInput from "humaninput/dist/humaninput-1.1.15-full";
 import paper from "paper";
 import Pencil from "./tools/Pencil";
 import Pan from "./tools/Pan";
+import drawGridLines from "./drawGridLines";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -69,6 +70,10 @@ class App extends React.Component {
     this.HI.on("escape", this.closeProject);
     window.onload = () => {
       this.scope = paper.setup("project");
+      this.backgroundLayer = paper.project.activeLayer;
+      drawGridLines(10, paper.view.bounds);
+      this.sketchLayer = new paper.Layer();
+      this.sketchLayer.activate();
     };
     //set lastTool,activeTool on shortcut(specified in the tools file )
     this.state.tools.forEach((tool) => {
@@ -114,21 +119,14 @@ class App extends React.Component {
   };
   newProject = () => {
     console.log("newProject: uttto file???");
+    this.sketchLayer.removeChildren();
     return true;
   };
   closeProject = () => {
     console.log("closeProject: uttto file???");
     return true;
   };
-  setActiveTool(tool) {
-    if (!this.state.activeTool || this.state.activeTool.canSwitchTool) {
-      this.setState({
-        lastTool: this.state.activeTool,
-        activeTool: tool,
-      });
-      this.state.activeTool.tool.activate();
-    }
-  }
+  drawBackground() {}
   setActiveToolInfo(toolInfo) {
     this.setState({ activeToolInfo: toolInfo });
   }

@@ -5,7 +5,9 @@ class Pan {
     this.canSwitchTool = true;
     this.paperTool = new paper.Tool();
     this.paperTool.onMouseDrag = (event) => {
-      paper.project.activeLayer.translate(event.delta);
+      paper.project.layers.forEach((layer) => {
+        layer.translate(event.delta);
+      });
     };
   }
 }
