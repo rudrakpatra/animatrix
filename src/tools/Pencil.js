@@ -1,6 +1,8 @@
 import paper from "paper";
 class Pencil {
   constructor(scope, HI) {
+    this.shortcut = { sequence: "p", type: "switch" };
+    this.canSwitchTool = true; //make this false when you want to prevent switching to another tool: eg in middle of drawing a stroke
     this.lastStroke = null;
     this.strokeWidth = 1;
     this.fillColor = {
@@ -8,18 +10,22 @@ class Pencil {
       saturation: 0,
       brightness: 0.2 * Math.random(),
     };
-    this.tool = new paper.Tool();
-    this.tool.minDistance = 2;
-    this.tool.maxDistance = 40;
-    this.tool.onMouseDown = (event) => {
+    this.paperTool = new paper.Tool();
+    this.paperTool.minDistance = 5;
+    this.paperTool.maxDistance = 20;
+
+    this.paperTool.onMouseDown = (event) => {
       this.lastStroke = new paper.Path();
       this.lastStroke.fillColor = this.fillColor;
       this.lastStroke.add(event.point);
+      this.canSwitchTool = false;
     };
-    this.tool.onMouseDrag = (event) => {
-      var step = new paper.Point(event.delta.x / 20, event.delta.y / 20);
-      //1 to 4
-      this.strokeWidth = 0.4 * step.length + 0.6 * this.strokeWidth;
+
+    this.paperTool.onMouseDrag = (event) => {
+      var step = new paper.Point(event.delta.x / 10, event.delta.y / 10);
+      //width varies from
+      //0.5 to 2
+      this.strokeWidth = 0.2 * step.length + 0.8 * this.strokeWidth;
       step.length = this.strokeWidth;
       step.angle = event.delta.angle + 90;
       var top = new paper.Point(
@@ -35,10 +41,11 @@ class Pencil {
       this.lastStroke.smooth();
     };
 
-    this.tool.onMouseUp = (event) => {
+    this.paperTool.onMouseUp = (event) => {
       this.lastStroke.add(event.point);
       this.lastStroke.closed = true;
       this.lastStroke.smooth();
+      this.canSwitchTool = true;
     };
   }
 }

@@ -39,14 +39,17 @@
 }
 .modifier {
   padding: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   margin: 3px;
   margin-bottom: 10px;
   background-color: var(--color-neutral);
-  white-space: nowrap;
-  opacity: 0.8;
   height: fit-content;
-  overflow-y: hidden;
+  white-space: nowrap;
+  line-height: 2px;
+  opacity: 0.8;
   overflow-x: scroll;
+  overflow-y: hidden;
   scroll-behavior: smooth;
   color: var(--color-neon);
 }
@@ -56,10 +59,8 @@
 .modifiersList > .container {
   display: flex;
   flex-direction: column;
-  height: 0px;
+  height: 15vh;
   background-color: var(--color-neutral-light);
-  transition: all 100ms ease-in-out;
-  transition-delay: 0.05s;
   overflow-x: hidden;
   overflow-y: scroll;
   scroll-behavior: smooth;
@@ -67,17 +68,30 @@
 .modifiersList > .container::-webkit-scrollbar {
   display: none;
 }
-.modifiersList:hover > .container {
-  height: 20vh;
-  transition-delay: 0.4s;
-}
 .modifiersList {
   display: flex;
   flex-direction: column;
   width: 100vw;
   overflow: hidden;
   background-color: var(--color-darker);
-  line-height: 10px;
-  padding-top: 10px;
-  padding-bottom: 2px;
+  padding-top: 15px;
 }
+/* 
+<div class="toolsBar overlay">
+    <div class="content">
+        <div class="modifiersList">
+            <div class="container">
+                <div class="modifier color">color : red</div>
+                <div class="modifier color">width : 2</div>
+                <div class="modifier color">flow : smooth</div>
+            </div>
+        </div>
+        <div class="toolsList">
+            <div class="tool active">sketch</div>
+            <div class="tool false">shape</div>
+            <div class="tool false">shadow</div>
+            <div class="tool false">blend</div>
+        </div>
+    </div>
+</div>
+ */

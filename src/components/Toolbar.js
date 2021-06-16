@@ -8,8 +8,8 @@ class Toolbar extends React.Component {
     return (
       <div className="modifiersList">
         <div className="container">
-          {this.props.activeTool
-            ? Object.entries(this.props.activeTool.config.modifiers).map(
+          {this.props.activeToolInfo
+            ? Object.entries(this.props.activeToolInfo.config.modifiers).map(
                 ([, [type, data]], i) => {
                   return (
                     <div
@@ -32,14 +32,16 @@ class Toolbar extends React.Component {
   renderTools() {
     return (
       <div className="toolsList">
-        {this.props.tools.map((tool, i) => {
+        {this.props.toolModifiers.map((toolInfo, i) => {
           return (
             <div
               key={i}
-              className={`tool ${this.props.activeTool === tool && "active"}`}
-              onClick={() => this.props.setActiveTool(tool)}
+              className={`tool ${
+                this.props.activeToolInfo === toolInfo && "active"
+              }`}
+              onClick={() => this.props.setActiveToolInfo(toolInfo)}
             >
-              {tool.config.name}
+              {toolInfo.config.name}
             </div>
           );
         })}
